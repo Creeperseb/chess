@@ -1,0 +1,61 @@
+public class Chess {
+    public static final int BOARD_SIZE = 8;
+    private Piece[][] board;
+
+    public Chess() {
+        board = new Piece[BOARD_SIZE][BOARD_SIZE];
+        setupBoard();
+    }
+
+    private void setupBoard() {
+        // Set up the pieces on the board
+        for (int i = 0; i < BOARD_SIZE; i++) {
+            board[1][i] = new Pawn(Piece.Color.WHITE);
+            board[6][i] = new Pawn(Piece.Color.BLACK);
+        }
+        board[0][0] = new Rook(Piece.Color.WHITE);
+        board[0][7] = new Rook(Piece.Color.WHITE);
+        board[7][0] = new Rook(Piece.Color.BLACK);
+        board[7][7] = new Rook(Piece.Color.BLACK);
+        // ... set up other pieces
+    }
+}
+
+public abstract class Piece {
+    public enum Color { WHITE, BLACK }
+    private Color color;
+
+    public Piece(Color color) {
+        this.color = color;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public abstract boolean canMove(int fromX, int fromY, int toX, int toY);
+}
+
+public class Pawn extends Piece {
+    public Pawn(Color color) {
+        super(color);
+    }
+
+    @Override
+    public boolean canMove(int fromX, int fromY, int toX, int toY) {
+        // Implement pawn movement rules
+        return false;
+    }
+}
+
+public class Rook extends Piece {
+    public Rook(Color color) {
+        super(color);
+    }
+
+    @Override
+    public boolean canMove(int fromX, int fromY, int toX, int toY) {
+        // Implement rook movement rules
+        return false;
+    }
+}
